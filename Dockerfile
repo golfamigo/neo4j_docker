@@ -43,7 +43,7 @@ FROM neo4j:5.25.1
 
 # 正確格式的環境變數 - 使用小寫和下劃線
 ENV NEO4J_AUTH=neo4j/password
-ENV NEO4J_dbms_connector_bolt_tls__level=DISABLED
+ENV NEO4J_server_bolt_tls__level=DISABLED
 ENV NEO4J_server_config_strict__validation_enabled=false
 
 # 複製日誌配置文件
