@@ -1,0 +1,2 @@
+business_id:ID,business_name,business_description,business_address,business_phone,business_email,business_type,:LABEL
+biz001,ZOE美髮沙龍,ZOE美髮沙龍提供專業的剪髮、染髮和護髮服務,台北市信義區信義路5段5號,02-12345678,service@zoesalon.com,美髮,Business

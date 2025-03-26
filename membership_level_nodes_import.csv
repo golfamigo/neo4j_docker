@@ -1,0 +1,2 @@
+membership_level_id:ID,membership_level_name,membership_level_description,membership_level_benefits,:LABEL
+mem001,標準會員,基本會員權益,預約服務享有95折優惠,MembershipLevel

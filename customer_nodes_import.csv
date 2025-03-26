@@ -1,0 +1,2 @@
+customer_profile_id:ID,customer_name,customer_email,customer_phone,gender,customer_birthdate,:LABEL
+cust001,李小華,lee@example.com,0987-654-321,female,1990-05-20,Customer

@@ -1,0 +1,2 @@
+staff_member_id:ID,staff_member_name,staff_member_email,staff_member_phone,staff_member_hire_date,:LABEL
+staff001,王小明,wang@zoesalon.com,0912-345-678,2022-01-15,Staff

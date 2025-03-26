@@ -1,0 +1,2 @@
+line_id:ID,line_notification_enabled,line_language_preference,:LABEL
+line001,true,zh-TW,LineUser

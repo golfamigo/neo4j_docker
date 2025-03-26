@@ -1,0 +1,2 @@
+business_hours_id:ID,day_of_week,open_time,close_time,:LABEL
+hours001,1,09:00:00,21:00:00,BusinessHours

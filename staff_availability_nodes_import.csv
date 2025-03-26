@@ -1,0 +1,2 @@
+staff_availability_id:ID,day_of_week,start_time,end_time,:LABEL
+avail001,1,09:00:00,18:00:00,StaffAvailability

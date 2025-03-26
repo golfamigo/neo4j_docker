@@ -1,0 +1,2 @@
+bookable_item_id:ID,bookable_item_name,bookable_item_description,bookable_item_price,bookable_item_duration,bookable_item_max_capacity,bookable_item_type_code,:LABEL
+service001,基礎剪髮,包含洗髮、剪髮和吹整,500,60 minutes,1,service,Service
