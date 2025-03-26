@@ -49,10 +49,6 @@ ENV NEO4J_PLUGINS='["apoc", "apoc-extended", "genai"]'
 
 RUN echo "NEO4J_AUTH=${DB_PASSWORD}"
 
-# 複製日誌配置文件
-COPY server-logs.xml /var/lib/neo4j/conf/server-logs.xml
-COPY user-logs.xml /var/lib/neo4j/conf/user-logs.xml
-
 # Use the preloaded database from the import stage
 COPY --from=neo4j-import /data /data
 
