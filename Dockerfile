@@ -45,7 +45,7 @@ FROM neo4j:5.25.1
 ENV NEO4J_AUTH=neo4j/password
 ENV NEO4J_server_bolt_tls__level=DISABLED
 ENV NEO4J_server_config_strict__validation_enabled=false
-NEO4J_PLUGINS='["apoc", "apoc-extended", "genai"]'
+ENV NEO4J_PLUGINS='["apoc", "apoc-extended", "genai"]'
 
 # 複製日誌配置文件
 COPY server-logs.xml /var/lib/neo4j/conf/server-logs.xml
