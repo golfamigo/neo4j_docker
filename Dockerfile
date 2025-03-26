@@ -2,7 +2,7 @@
 FROM neo4j:5.25.1 as neo4j-import
 
 # Create necessary directories for Neo4j
-RUN mkdir -p /data /import
+RUN mkdir -p /data /import /plugins
 
 # 複製所有 CSV 文件到容器的 /import 目錄
 COPY *.csv /import/
@@ -40,12 +40,14 @@ RUN files_exist=false && \
 
 # Second stage for running Neo4j with the preloaded data
 FROM neo4j:5.25.1
-
+ARG DB_PASSWORD=""
 # 正確格式的環境變數 - 使用小寫和下劃線
-ENV NEO4J_AUTH=neo4j/password
+ENV NEO4J_AUTH=neo4j/${DB_PASSWORD}
 ENV NEO4J_server_bolt_tls__level=DISABLED
 ENV NEO4J_server_config_strict__validation_enabled=false
 ENV NEO4J_PLUGINS='["apoc", "apoc-extended", "genai"]'
+
+RUN echo "NEO4J_AUTH=${DB_PASSWORD}"
 
 # 複製日誌配置文件
 COPY server-logs.xml /var/lib/neo4j/conf/server-logs.xml
