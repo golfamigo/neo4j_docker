@@ -7,6 +7,9 @@ RUN mkdir -p /data /import
 # 複製所有 CSV 文件到容器的 /import 目錄
 COPY *.csv /import/
 
+# 列出導入目錄中的文件以便調試
+RUN ls -la /import/
+
 # Import files based on what's available
 RUN files_exist=false && \
     IMPORT_CMD="neo4j-admin database import full neo4j" && \
@@ -38,20 +41,18 @@ RUN files_exist=false && \
 # Second stage for running Neo4j with the preloaded data
 FROM neo4j:5.25.1
 
-# 設置環境變數（根據參考的環境變數）
-ENV NEO4J_AUTH=neo4j/${DB_PASSWORD}
-ENV NEO4J_BOLT_TLS_LEVEL=DISABLED
-ENV NEO4J_BIND_ADDRESS=0.0.0.0
-ENV NEO4J_BOLT_PORT_NUMBER=7687
-ENV NEO4J_HTTP_PORT_NUMBER=7474
-ENV NEO4J_HTTPS_ENABLED=false
+# 正確格式的環境變數 - 使用小寫和下劃線
+ENV NEO4J_AUTH=neo4j/password
+ENV NEO4J_dbms_connector_bolt_tls__level=DISABLED
+ENV NEO4J_server_config_strict__validation_enabled=false
 
-RUN echo "NEO4J_AUTH=${DB_PASSWORD}"
+# 複製日誌配置文件
+COPY server-logs.xml /var/lib/neo4j/conf/server-logs.xml
+COPY user-logs.xml /var/lib/neo4j/conf/user-logs.xml
 
 # Use the preloaded database from the import stage
 COPY --from=neo4j-import /data /data
-COPY server-logs.xml /var/lib/neo4j/conf/server-logs.xml
-COPY user-logs.xml /var/lib/neo4j/conf/server-logs.xml
+
 # Expose Neo4j ports
 EXPOSE 7474 7687
 
